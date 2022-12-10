@@ -1,0 +1,44 @@
+{% extends 'feed.html' %}
+{% load static %}
+{% block contentProfile %}
+
+<!-- Profile -->
+<div class="profile">
+
+	<h2>Tus proyectos, @{{ user.username }}</h2>
+</div>
+
+<div class="container-article">
+	<table class="table">
+		<div class="d-grid">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+		</div>
+		<th scope="col">URL</th>
+		<th scope="col">TÍTULO</th>
+		<th scope="col">DESCRIPCIÓN</th>
+		<th scope="col">OPCIONES</th>
+		</tr>
+		</thead>
+</div>
+
+<tbody>
+	{% for p in project %}
+	<tr>
+		<td>{{p.id}}</td>
+		<td>{{p.url_imagen}}</td>
+		<td>{{ p.titulo}}</td>
+		<td>{{ p.descripcion }}</td>
+		<td>
+			<button type="submit" class="post" id="">
+				<a href="/delete/{{ p.id }}" onclick="return confirm('Estas seguro de eliminar el salón seleccionado?')"
+					class="btn btn-danger btn-sm">Eliminar</a>
+			</button>
+		</td>
+	</tr>
+	{% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock contentProfile %}
